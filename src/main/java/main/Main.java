@@ -10,5 +10,6 @@ public class Main {
         ll.addFirst(1);
         ll.print();
         System.out.println(ll.size);
+
     }
 }
