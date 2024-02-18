@@ -10,8 +10,8 @@ public class Main {
         ll.addFirst(1);
         ll.print();
         ll.removeFirst();
-        ll.print();       //Print for removing.....
+        ll.print();       //Print for removing first...
         ll.removeLast();
-        ll.print();
+        ll.print();       //Print for removing last...
     }
 }
