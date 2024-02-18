@@ -42,8 +42,48 @@ public class LinkedList1 {
         tail = newNode;
     }
 
-    //To print a list...
+    //To remove first element in LinkedList
 
+    public int removeFirst() {
+        if (size == 0) {
+            System.out.println("UnderFlow");
+            return Integer.MIN_VALUE;
+        } else if (size == 1) {
+            int val = head.data;
+            head = tail = null;
+            size = 0;
+            return val;
+        }
+        int val = head.data;
+        head = head.next;
+        size--;
+        return val;
+    }
+
+    //To remove last element in linkedlist
+
+    public int removeLast() {
+        if (size == 0) {
+            System.out.println("List Is Empty");
+            return Integer.MIN_VALUE;
+        } else if (size == 1) {
+            int val = head.data;
+            head = tail = null;
+            size = 0;
+            return val;
+        }
+        Node prev = head;
+        for (int i = 0; i < size - 2; i++) {
+            prev = prev.next;
+        }
+        int val = prev.next.data;
+        prev.next = null;
+        tail = prev;
+        size--;
+        return val;
+    }
+
+    //To print a list...
     public void print() {
         Node temp = head;
         while (temp != null) {
