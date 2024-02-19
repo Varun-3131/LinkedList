@@ -83,6 +83,21 @@ public class LinkedList1 {
         return val;
     }
 
+    // Reverse a Linked List...
+
+    public void reverse() {
+        Node prev = null;
+        Node curr = tail = head;
+        Node next;
+        while (curr != null) {
+            next = curr.next;
+            curr.next=prev;
+            prev = curr;
+            curr = next;
+            head = prev;
+        }
+    }
+
     //To print a list...
     public void print() {
         Node temp = head;
