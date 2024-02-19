@@ -98,6 +98,7 @@ public class LinkedList1 {
         }
     }
 
+
     //To print a list...
     public void print() {
         Node temp = head;
