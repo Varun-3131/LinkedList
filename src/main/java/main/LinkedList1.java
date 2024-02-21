@@ -91,13 +91,36 @@ public class LinkedList1 {
         Node next;
         while (curr != null) {
             next = curr.next;
-            curr.next=prev;
+            curr.next = prev;
             prev = curr;
             curr = next;
             head = prev;
         }
     }
 
+    //Delete Nth Node From End...
+
+    public void deleteNthNodeFromEnd(int n) {
+        //For calculating Size
+        int sz = 0;
+        Node temp = head;
+        while (temp != null) {
+            temp = temp.next;
+            sz++;
+        }
+        if (n == sz) {
+            head = head.next;
+            return;
+        }
+        int i = 1;
+        int iToFind = sz - n;
+        Node prev = head;
+        while (i < iToFind) {
+            prev = prev.next;
+            i++;
+        }
+        prev.next = prev.next.next;
+    }
 
     //To print a list...
     public void print() {
