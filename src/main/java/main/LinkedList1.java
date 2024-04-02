@@ -169,6 +169,21 @@ public class LinkedList1 {
         return true;
     }
 
+    //To Detect A Loop/Cycle In A linkedList...
+    public static boolean isCycle(){
+        Node slow=head;
+        Node fast=head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next; //+1 steps
+            fast = fast.next.next;  //+2 steps
+            if(slow==fast){             //  <--This Statement checks whether there is a loop or not...
+                System.out.println("Loop Present");
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static class Node {
         int data;
         Node next;
