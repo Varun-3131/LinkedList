@@ -5,6 +5,21 @@ public class LinkedList1 {
     public static Node tail;
     public static int size;
 
+    //To Detect A Loop/Cycle In A linkedList...
+    public static boolean isCycle() {
+        Node slow = head;
+        Node fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next; //+1 steps
+            fast = fast.next.next;  //+2 steps
+            if (slow == fast) {             //  <--This Statement checks whether there is a loop or not...
+                System.out.println("Loop Present");
+                return true;
+            }
+        }
+        return false;
+    }
+
     //To add element at head of the list...
     public void addFirst(int data) {
         Node newNode = new Node(data);
@@ -30,6 +45,8 @@ public class LinkedList1 {
         temp.next = newNode;
     }
 
+    //To remove first element in LinkedList
+
     //To add elements at the tail of the list
     public void addLast(int data) {
         Node newNode = new Node(data);
@@ -42,7 +59,7 @@ public class LinkedList1 {
         tail = newNode;
     }
 
-    //To remove first element in LinkedList
+    //To remove last element in linkedlist
 
     public int removeFirst() {
         if (size == 0) {
@@ -60,7 +77,7 @@ public class LinkedList1 {
         return val;
     }
 
-    //To remove last element in linkedlist
+    // Reverse a Linked List...
 
     public int removeLast() {
         if (size == 0) {
@@ -83,7 +100,7 @@ public class LinkedList1 {
         return val;
     }
 
-    // Reverse a Linked List...
+    //Delete Nth Node From End...
 
     public void reverse() {
         Node prev = null;
@@ -97,8 +114,6 @@ public class LinkedList1 {
             head = prev;
         }
     }
-
-    //Delete Nth Node From End...
 
     public void deleteNthNodeFromEnd(int n) {
         //For calculating Size
@@ -143,6 +158,7 @@ public class LinkedList1 {
         return slow;
     }
 
+    //Check Palindrome...
     public boolean CheckPalindrome() {
         if (head == null || head.next != null) {
             return true;
@@ -169,19 +185,43 @@ public class LinkedList1 {
         return true;
     }
 
-    //To Detect A Loop/Cycle In A linkedList...
-    public static boolean isCycle(){
-        Node slow=head;
-        Node fast=head;
+    //To Detect Loop In A LinkedList...
+    public boolean detectLoop() {
+        Node slow = head;
+        Node fast = head;
         while (fast != null && fast.next != null) {
             slow = slow.next; //+1 steps
             fast = fast.next.next;  //+2 steps
-            if(slow==fast){             //  <--This Statement checks whether there is a loop or not...
-                System.out.println("Loop Present");
+            if (slow == fast) {
                 return true;
             }
         }
         return false;
+    }
+
+    //To Remove Loop In A LinkedList...
+    public void removeLoop() {
+        Node slow = head;
+        Node fast = head;
+boolean cycle = false;
+        while (fast != null && fast.next != null) {
+            slow = slow.next; //+1 steps
+            fast = fast.next.next;  //+2 steps
+            if (slow == fast) {
+                break;
+            }
+        }
+        if(cycle== false){
+            return;
+        }
+        slow = head;
+        Node prev = null;
+        while (slow != fast) {
+            prev = fast;
+            slow = slow.next;
+            fast = fast.next;
+        }
+        prev.next = null;
     }
 
     public static class Node {
@@ -192,6 +232,5 @@ public class LinkedList1 {
             this.data = data;
             this.next = null;
         }
-
     }
 }
